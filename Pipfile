@@ -13,6 +13,7 @@ pymongo = "*"
 selenium = "*"
 splinter = "*"
 black = "*"
+pprint = "*"
 
 [requires]
 python_version = "3.8"
