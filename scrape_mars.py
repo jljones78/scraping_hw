@@ -78,4 +78,4 @@ def scrape():
         hemisphere_dict.append(temp_dict)
     scrape_results_dict["hemisphere_dict"] = hemisphere_dict
 
-    print(scrape_results_dict)
+    return scrape_results_dict
