@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mission to Mars</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .figure-caption {
+            padding: 10px;
+        }
+
+        figure {
+            padding: 15px;
+        }
+
+        div .facts-box {
+            padding: 15px;
+            border: 1px solid gray;
+        }
+
+        .facts-box h2 {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron text-center">
+            <h1>Mission to Mars</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data!</a></p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Latest Mars News</h2>
+                <h4>{{ mars_db.news_title }}</h4>
+                <p>{{ mars_db.news_paragraph }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h2>Featured Image</h2>
+                <img src="{{ mars_db.featured_image_url }}" alt="Mars image" class="featuredpic" width=90%>
+            </div>
+            <div class="col-md-4">
+                <div class="facts-box">
+                    <h2>Current Weather on Mars</h2>
+                    <p>{{ mars_db.mars_weather }}</p>
+                </div>
+                <h2>Mars Facts</h2>
+                <table class="table table-bordered table-dark">
+                    <p class="card-text">{{ mars_db.mars_facts | safe }}</p>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center hempics">
+                    <h2>Mars Hemispheres</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <figure class="figure text-center">
+                                <img src="{{ mars_db.hemisphere_dict[0].img_url }}" class="figure-img img-fluid rounded"
+                                    alt="lat vs cloud graph" width=90%>
+                                <figcaption class="figure-caption">{{ mars_db.hemisphere_dict[0].title }}</figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-md-6">
+                            <figure class="figure text-center">
+                                <img src="{{ mars_db.hemisphere_dict[1].img_url }}" class="figure-img img-fluid rounded"
+                                    alt="lat vs cloud graph" width=90%>
+                                <figcaption class="figure-caption">{{ mars_db.hemisphere_dict[1].title }}</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <figure class="figure text-center">
+                                <img src="{{ mars_db.hemisphere_dict[2].img_url }}" class="figure-img img-fluid rounded"
+                                    alt="lat vs cloud graph" width=90%>
+                                <figcaption class="figure-caption">{{ mars_db.hemisphere_dict[2].title }}</figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-md-6">
+                            <figure class="figure text-center">
+                                <img src="{{ mars_db.hemisphere_dict[3].img_url }}" class="figure-img img-fluid rounded"
+                                    alt="lat vs cloud graph" width=90%>
+                                <figcaption class="figure-caption">{{ mars_db.hemisphere_dict[3].title }}</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</body>
+
+</html>

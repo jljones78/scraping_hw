@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup as bs
 import requests
 import pymongo
 import pprint
+import lxml
 from pymongo import MongoClient
 from selenium import webdriver
 from splinter import Browser
@@ -53,11 +54,11 @@ def scrape():
 
     # scrape Mars facts website, display as html table str using pandas
     mars_facts_url = "https://space-facts.com/mars/"
-    mars_df = pd.read_html(mars_facts_url)[0]
-
-    # print html string
-    mars_facts_html_str = mars_df.to_html()
-    scrape_results_dict["mars_facts"] = mars_facts_html_str
+    facts_df = pd.read_html(mars_facts_url)[0].rename(
+        index=str, columns={"0": "Category", "1": "Data"}
+    )
+    facts_table = facts_df.to_html(na_rep="", index=False)
+    scrape_results_dict["mars_facts"] = facts_table
 
     # scrape USGS Astrogeology site for high res photos of hemispheres
     usgs_url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
